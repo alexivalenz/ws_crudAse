@@ -1,0 +1,17 @@
+//Archivo utilizado para revisar las peticiones HTTP
+//desde la extension REST CLIENT de VSC
+
+@apiName = http://localhost:3000/users
+
+//getAllUsers
+GET {{apiName}}
+
+###
+//createNewUser
+POST {{apiName}}
+Content-Type: application/json
+
+{
+    "name":"Tanjiro Kamado",
+    "status":"Activo"
+}
