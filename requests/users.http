@@ -15,3 +15,7 @@ Content-Type: application/json
     "name":"Tanjiro Kamado",
     "status":"Activo"
 }
+
+###
+//getUserByName
+GET {{apiName}}/?id=1

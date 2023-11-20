@@ -37,4 +37,21 @@ export const addNewUser = async (req, res) => {
         res.status(500);
         res.send(error.message)
     }
+};
+
+export const getUserById = async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        const pool = await getConnection();
+        const result = await pool.request()
+        .input('id', id)
+        .query(bdQueries.getUserById);
+
+        console.log('***Peticion POST realizada en createNewUser***', result.recordset[0]);
+        res.send(result.recordset[0])
+    } catch (error) {
+        res.status(500);
+        res.send(error.message)
+    }
 }
