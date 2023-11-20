@@ -1,0 +1,31 @@
+//Archivo utilizado para revisar las peticiones HTTP
+//desde la extension REST CLIENT de VSC
+
+@apiName = http://localhost:3000/users
+
+//getAllUsers - Consultar todos los usuarios
+GET {{apiName}}
+
+### getUserById - Consultar usuario por Id
+GET {{apiName}}/?id=1
+
+### createNewUser - Agregar usuario nuevo
+POST {{apiName}}
+Content-Type: application/json
+
+{
+    "name":"Tanjiro Kamado",
+    "status":"Activo"
+}
+
+### deleteUserById - Eliminar usuario por Id
+DELETE {{apiName}}/7
+
+### updateUserById - Modifica los datos especificados de un usuario determinado en base a su id
+PUT {{apiName}}/5
+Content-Type: application/json
+
+{
+    "name":"Alexis Jackson",
+    "status":"Activo"
+}
