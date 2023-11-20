@@ -72,3 +72,33 @@ export const deleteUserById = async (req, res) => {
         res.send(error.message)
     }
 }
+
+export const updateUserById = async (req, res) => {
+    const {name, status} = req.body;
+    const {id} = req.params;
+
+    let statusCode = 0;
+
+    if(name == null || status == null){
+        return res.status(400).json({msg: 'Bad Request. Asegurese de llenar todos los campos de la peticion'})
+    }
+    if(status == 'Activo') statusCode = 1;
+
+    try {
+        const pool = await getConnection();
+        await pool
+        .request()
+        .input('id', sql.Int, id)
+        .input('name', sql.VarChar, name)
+        .input('status', sql.Int, statusCode)
+        .query(bdQueries.updateUserById)
+
+        console.log('***Peticion PUT realizada en updateUserById***');
+        res.json({name, status})
+    } catch (error) {
+        res.status(500);
+        res.send(error.message)
+    }
+
+
+}

@@ -20,3 +20,12 @@ Content-Type: application/json
 
 ### deleteUserById - Eliminar usuario por Id
 DELETE {{apiName}}/7
+
+### updateUserById - Modifica los datos especificados de un usuario determinado en base a su id
+PUT {{apiName}}/5
+Content-Type: application/json
+
+{
+    "name":"Alexis Jackson",
+    "status":"Activo"
+}
