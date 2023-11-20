@@ -13,6 +13,23 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
+export const getUserById = async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        const pool = await getConnection();
+        const result = await pool.request()
+        .input('id', id)
+        .query(bdQueries.getUserById);
+
+        console.log('***Peticion GET realizada en getUserById***', result.recordset[0]);
+        res.send(result.recordset[0])
+    } catch (error) {
+        res.status(500);
+        res.send(error.message)
+    }
+}
+
 export const addNewUser = async (req, res) => {
     const {name, status} = req.body
     let statusCode = 0;
@@ -39,17 +56,17 @@ export const addNewUser = async (req, res) => {
     }
 };
 
-export const getUserById = async (req, res) => {
+export const deleteUserById = async (req, res) => {
     const {id} = req.params;
 
     try {
         const pool = await getConnection();
         const result = await pool.request()
         .input('id', id)
-        .query(bdQueries.getUserById);
+        .query(bdQueries.deleteUser);
 
-        console.log('***Peticion POST realizada en createNewUser***', result.recordset[0]);
-        res.send(result.recordset[0])
+        console.log('***Peticion DELETE realizada en deleteUser***');
+        res.send(result)
     } catch (error) {
         res.status(500);
         res.send(error.message)

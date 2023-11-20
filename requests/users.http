@@ -3,11 +3,13 @@
 
 @apiName = http://localhost:3000/users
 
-//getAllUsers
+//getAllUsers - Consultar todos los usuarios
 GET {{apiName}}
 
-###
-//createNewUser
+### getUserById - Consultar usuario por Id
+GET {{apiName}}/?id=1
+
+### createNewUser - Agregar usuario nuevo
 POST {{apiName}}
 Content-Type: application/json
 
@@ -16,6 +18,5 @@ Content-Type: application/json
     "status":"Activo"
 }
 
-###
-//getUserByName
-GET {{apiName}}/?id=1
+### deleteUserById - Eliminar usuario por Id
+DELETE {{apiName}}/7
