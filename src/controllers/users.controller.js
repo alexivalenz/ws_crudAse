@@ -43,7 +43,7 @@ export const getUserById = async (req, res) => {
 }
 
 export const addNewUser = async (req, res) => {
-    const {name, status} = req.body
+    const {id, name, status} = req.body
     let statusCode = 0, success = 0;
 
     if(name == null || status == null){
@@ -56,6 +56,7 @@ export const addNewUser = async (req, res) => {
         const pool = await getConnection();
         await pool
         .request()
+        .input('id', sql.Int, id)
         .input('name', sql.VarChar, name)
         .input('status', sql.Int, statusCode)
         .query(bdQueries.addNewUser)
@@ -122,7 +123,7 @@ export const nextIdInDB = async (req, res) => {
         let nextId;
         (result.recordset[0].max_id == 'NULL') ? nextId = 1 : nextId = result.recordset[0].max_id + 1;
         console.log(nextId)
-        res.json({"nextId":nextId})
+        res.json(nextId)
     } catch (error) {
         res.status(500);
         res.send(error.message)
