@@ -1,4 +1,4 @@
-# FrontCrudExamenAse
+# ws_crudAse
 
 Proyecto backend encargado de la creación, consulta y administración de usuarios registrados en una base de datos en SQL Server.
 Utiliza tecnologias como NodeJS, Babel y nodemon para facilitar la ejecución de este en su modo Development Server.
