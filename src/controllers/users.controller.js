@@ -17,7 +17,7 @@ export const getAllUsers = async (req, res) => {
             (result.recordset[i].estatus_usuario == 1) ? status = 'Activo' : status = 'Cancelado';
             modifyResult.push({id, name, status})
         }
-        console.log(modifyResult)
+        //console.log(modifyResult)
         res.json(modifyResult)
     } catch (error) {
         res.status(500);
@@ -34,7 +34,7 @@ export const getUserById = async (req, res) => {
         .input('id', id)
         .query(bdQueries.getUserById);
 
-        console.log('***Peticion GET realizada en getUserById***', result.recordset[0]);
+        //console.log('***Peticion GET realizada en getUserById***', result.recordset[0]);
         res.send(result.recordset[0])
     } catch (error) {
         res.status(500);
@@ -62,7 +62,7 @@ export const addNewUser = async (req, res) => {
         .query(bdQueries.addNewUser)
 
         success = 1;
-        console.log('***Peticion POST realizada en createNewUser***');
+        //console.log('***Peticion POST realizada en createNewUser***');
         res.json({name, status, statusCode, success})
     } catch (error) {
         res.status(500);
@@ -79,7 +79,7 @@ export const deleteUserById = async (req, res) => {
         .input('id', id)
         .query(bdQueries.deleteUser);
 
-        console.log('***Peticion DELETE realizada en deleteUser***');
+        //console.log('***Peticion DELETE realizada en deleteUser***');
         res.send(result)
     } catch (error) {
         res.status(500);
@@ -107,7 +107,7 @@ export const updateUserById = async (req, res) => {
         .input('status', sql.Int, statusCode)
         .query(bdQueries.updateUserById)
 
-        console.log('***Peticion PUT realizada en updateUserById***');
+        //console.log('***Peticion PUT realizada en updateUserById***');
         res.json({name, status})
     } catch (error) {
         res.status(500);
@@ -122,7 +122,7 @@ export const nextIdInDB = async (req, res) => {
         const result = await pool.request().query(bdQueries.nextIdInDB);
         let nextId;
         (result.recordset[0].max_id == 'NULL') ? nextId = 1 : nextId = result.recordset[0].max_id + 1;
-        console.log(nextId)
+        //console.log(nextId)
         res.json(nextId)
     } catch (error) {
         res.status(500);
