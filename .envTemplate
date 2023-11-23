@@ -3,7 +3,7 @@
 # RENOMBRAR EL ARCHIVO COMO .env
 #
 PORT = 3000
-DB_USER = 'devUser'
-DB_PASS = 'devpassword'
+DB_USER = ''
+DB_PASS = ''
 DB_SERVER = 'localhost'
 DB_NAME = 'usuarios'
