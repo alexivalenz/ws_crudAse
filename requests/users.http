@@ -2,12 +2,16 @@
 //desde la extension REST CLIENT de VSC
 
 @apiName = http://localhost:3000/users
+@apiNameId= http://localhost:3000/nextId
 
 //getAllUsers - Consultar todos los usuarios
 GET {{apiName}}
 
 ### getUserById - Consultar usuario por Id
 GET {{apiName}}/?id=1
+
+### users/nextId - Obtener el siguiente ID a utilizar al insertar
+GET {{apiNameId}}
 
 ### createNewUser - Agregar usuario nuevo
 POST {{apiName}}

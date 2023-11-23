@@ -113,3 +113,18 @@ export const updateUserById = async (req, res) => {
         res.send(error.message)
     }
 }
+
+export const nextIdInDB = async (req, res) => {
+    
+    try {
+        const pool = await getConnection();
+        const result = await pool.request().query(bdQueries.nextIdInDB);
+        let nextId;
+        nextId = result.recordset[0].max_id + 1;
+        console.log(nextId)
+        res.json({"nextId":nextId})
+    } catch (error) {
+        res.status(500);
+        res.send(error.message)
+    }
+};
