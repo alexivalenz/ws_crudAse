@@ -120,7 +120,7 @@ export const nextIdInDB = async (req, res) => {
         const pool = await getConnection();
         const result = await pool.request().query(bdQueries.nextIdInDB);
         let nextId;
-        nextId = result.recordset[0].max_id + 1;
+        (result.recordset[0].max_id == 'NULL') ? nextId = 1 : nextId = result.recordset[0].max_id + 1;
         console.log(nextId)
         res.json({"nextId":nextId})
     } catch (error) {
