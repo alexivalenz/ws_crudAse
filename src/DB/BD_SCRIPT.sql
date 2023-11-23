@@ -3,7 +3,7 @@ USE usuarios;
 
 CREATE TABLE datos_usuarios(
 	id_usuario int PRIMARY KEY NOT NULL,
-	nombre_usuario varchar(50) NOT NULL,
+	nombre_usuario varchar(100) NOT NULL,
 	estatus_usuario int NOT NULL
 );
 
